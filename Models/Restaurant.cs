@@ -13,6 +13,8 @@
 
         public float restaurantRate { get; set; }
 
+        public string Phone { get; set; }
+
         public Menu menu { get; set; }
 
         public Restaurant() { }
