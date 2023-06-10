@@ -3,6 +3,7 @@
     public class Menu
     {
         public int RestaurantID { get; set; }
+
         public int MenuID { get; set; }
         public Dictionary<string, double> Items { get; set; }
 
