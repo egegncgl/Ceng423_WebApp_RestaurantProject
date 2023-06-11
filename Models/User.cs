@@ -12,7 +12,7 @@
         // Constructor
         public User(string username, string password, string email, string firstName, string lastName, bool isAdmin = false)
         {
-            Username = usernammmmmme;
+            Username = username;
             Password = password;
             Email = email;
             FirstName = firstName;
