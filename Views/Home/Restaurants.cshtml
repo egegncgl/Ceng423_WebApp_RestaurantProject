@@ -1,0 +1,132 @@
+﻿@{
+    ViewData["Title"] = "Restaurants";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Restaurant Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+        .container {
+            margin-top: 50px;
+        }
+
+        .restaurant-card {
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+            .restaurant-card img {
+                max-width: 100%;
+                height: auto;
+                margin-bottom: 10px;
+            }
+
+        .add-to-cart-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.show-menu-btn').click(function () {
+                var menuList = $(this).siblings('.menu-list');
+                menuList.toggle();
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Restaurants</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="restaurant-card">
+                    <img src="https://toohotel.com/wp-content/uploads/2022/09/TOO_restaurant_Panoramique_vue_Paris_nuit_v2-scaled.jpg" alt="Restaurant 1" />
+                    <h4>Restaurant 1</h4>
+                    <p>Address: 123 Main St, City</p>
+                    <p>Contact: 123-456-7890</p>
+                    <button class="show-menu-btn btn btn-primary">Show Menu</button>
+                    <div class="menu-list" style="display: none;">
+                        <h5>Menu:</h5>
+                        <ul>
+                            <li>Item 1</li>
+                            <li>Item 2</li>
+                            <li>Item 3</li>
+                        </ul>
+                        <label for="menu1">Select Meal:</label>
+                        <select id="menu1">
+                            <option value="item1">Item 1</option>
+                            <option value="item2">Item 2</option>
+                            <option value="item3">Item 3</option>
+                        </select>
+                        <button class="add-cart-btn btn btn-primary">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Repeat the above card structure for other restaurants -->
+
+            <div class="col-md-4">
+                <div class="restaurant-card">
+                    <img src="https://img.freepik.com/free-photo/top-view-table-full-delicious-food-composition_23-2149141353.jpg?w=2000" alt="Restaurant 1" />
+                    <h4>Restaurant 2</h4>
+                    <p>Address: 123 Main St, City</p>
+                    <p>Contact: 123-456-7890</p>
+                    <button class="show-menu-btn btn btn-primary">Show Menu</button>
+                    <div class="menu-list" style="display: none;">
+                        <h5>Menu:</h5>
+                        <ul>
+                            <li>Item 1</li>
+                            <li>Item 2</li>
+                            <li>Item 3</li>
+                        </ul>
+                        <label for="menu2">Select Meal:</label>
+                        <select id="menu2">
+                            <option value="item1">Item 1</option>
+                            <option value="item2">Item 2</option>
+                            <option value="item3">Item 3</option>
+                        </select>
+                        <button class="add-cart-btn btn btn-primary">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-4">
+                <div class="restaurant-card">
+                    <img src="https://www.deputy.com/uploads/2018/10/The-Most-Popular-Menu-Items-That-You-should-Consider-Adding-to-Your-Restaurant_Content-image1-min-1024x569.png" alt="Restaurant 1" />
+                    <h4>Restaurant 3</h4>
+                    <p>Address: 123 Main St, City</p>
+                    <p>Contact: 123-456-7890</p>
+                    <button class="show-menu-btn btn btn-primary">Show Menu</button>
+                    <div class="menu-list" style="display: none;">
+                        <h5>Menu:</h5>
+                        <ul>
+                            <li>Item 1</li>
+                            <li>Item 2</li>
+                            <li>Item 3</li>
+                        </ul>
+                        <label for="menu3">Select Meal:</label>
+                        <select id="menu3">
+                            <option value="item1">Item 1</option>
+                            <option value="item2">Item 2</option>
+                            <option value="item3">Item 3</option>
+                        </select>
+                        <button class="add-cart-btn btn btn-primary">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
