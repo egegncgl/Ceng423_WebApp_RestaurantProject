@@ -1,7 +1,12 @@
-﻿namespace Ceng423_WebApp_RestaurantProject.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
+
+namespace Ceng423_WebApp_RestaurantProject.Models
 {
+    [Keyless]
     public class Restaurant
     {
+       
         public int Id { get; set; }
         public String restaurantName { get; set; }
 
@@ -15,6 +20,7 @@
 
         public string Phone { get; set; }
 
+        [NotMapped]
         public Menu menu { get; set; }
 
         public Restaurant() { }
