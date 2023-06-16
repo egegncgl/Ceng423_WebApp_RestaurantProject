@@ -1,5 +1,8 @@
-﻿namespace Ceng423_WebApp_RestaurantProject.Models
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace Ceng423_WebApp_RestaurantProject.Models
 {
+    [Keyless]
     public class Menu
     {
         public int RestaurantID { get; set; }
