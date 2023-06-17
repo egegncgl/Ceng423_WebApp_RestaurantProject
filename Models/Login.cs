@@ -1,18 +1,23 @@
-﻿namespace Ceng423_WebApp_RestaurantProject.Models
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace Ceng423_WebApp_RestaurantProject.Models
 {
+    [Keyless]
     public class Login
     {
+        private AppContext db;
         public List<User> users;
 
         public Login(List<User> users)
         {
             this.users = users;
+           
         }
 
         public User AuthenticateUser(string username, string password)
         {
-            //burası database e göre değişecek
-            User user = users.FirstOrDefault(u => u.ValidateLogin(username, password));
+            ///burası database e göre değişecek
+             User user = db.Users.FirstOrDefault(u => u.Username == username && u.Password == password);
             if (user != null)
             {
                 Console.WriteLine("Giriş başarılı. Hoş geldiniz, " + user.Username + "!");
