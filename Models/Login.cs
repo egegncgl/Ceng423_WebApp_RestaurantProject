@@ -11,6 +11,7 @@
 
         public User AuthenticateUser(string username, string password)
         {
+            //burası database e göre değişecek
             User user = users.FirstOrDefault(u => u.ValidateLogin(username, password));
             if (user != null)
             {
