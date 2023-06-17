@@ -2,7 +2,6 @@
     ViewData["Title"] = "Restaurants";
 }
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,13 +32,56 @@
             bottom: 10px;
             right: 10px;
         }
+
+        .cart-container {
+            margin-top: 30px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            display: none;
+        }
+
+        .cart-item {
+            margin-bottom: 10px;
+        }
+
+        .delete-btn {
+            margin-left: 10px;
+        }
+
+        .delete-all-btn {
+            margin-top: 10px;
+        }
+
+        .buy-btn {
+            margin-top: 10px;
+        }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
-            $('.show-menu-btn').click(function () {
-                var menuList = $(this).siblings('.menu-list');
-                menuList.toggle();
+            $('.add-to-cart-btn').click(function () {
+                var restaurantCard = $(this).closest('.restaurant-card');
+                var restaurantName = restaurantCard.find('.restaurant-name').text();
+                var selectedFood = restaurantCard.find('.food-dropdown option:selected').text();
+                var cartItem = $('<div>').addClass('cart-item').text(restaurantName + ': ' + selectedFood);
+                var deleteBtn = $('<button>').addClass('btn btn-danger delete-btn').text('Delete');
+                cartItem.append(deleteBtn);
+                $('.cart-items').append(cartItem);
+                $('.cart-container').show();
+            });
+
+            $(document).on('click', '.delete-btn', function () {
+                $(this).closest('.cart-item').remove();
+            });
+
+            $(document).on('click', '.delete-all-btn', function () {
+                $('.cart-items').empty();
+            });
+
+            $('.buy-btn').click(function () {
+                alert('Thank you for your purchase!');
+                $('.cart-items').empty();
             });
         });
     </script>
@@ -50,81 +92,64 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="restaurant-card">
-                    <img src="https://toohotel.com/wp-content/uploads/2022/09/TOO_restaurant_Panoramique_vue_Paris_nuit_v2-scaled.jpg" alt="Restaurant 1" />
-                    <h4>Restaurant 1</h4>
+                    <img src="https://img.freepik.com/free-photo/top-view-table-full-delicious-food-composition_23-2149141353.jpg?w=2000" alt="Restaurant 1" />
+                    <h4 class="restaurant-name">Restaurant 1</h4>
                     <p>Address: 123 Main St, City</p>
                     <p>Contact: 123-456-7890</p>
-                    <button class="show-menu-btn btn btn-primary">Show Menu</button>
-                    <div class="menu-list" style="display: none;">
+                    <div>
                         <h5>Menu:</h5>
-                        <ul>
-                            <li>Item 1</li>
-                            <li>Item 2</li>
-                            <li>Item 3</li>
-                        </ul>
-                        <label for="menu1">Select Meal:</label>
-                        <select id="menu1">
+                        <select class="food-dropdown">
                             <option value="item1">Item 1</option>
                             <option value="item2">Item 2</option>
                             <option value="item3">Item 3</option>
                         </select>
-                        <button class="add-cart-btn btn btn-primary">Add to Cart</button>
                     </div>
+                    <button class="add-to-cart-btn btn btn-primary">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="restaurant-card">
+                    <img src="https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?cs=srgb&dl=pexels-pixabay-262978.jpg&fm=jpg" alt="Restaurant 2" />
+                    <h4 class="restaurant-name">Restaurant 2</h4>
+                    <p>Address: 123 Main St, City</p>
+                    <p>Contact: 123-456-7890</p>
+                    <div>
+                        <h5>Menu:</h5>
+                        <select class="food-dropdown">
+                            <option value="item1">Item 1</option>
+                            <option value="item2">Item 2</option>
+                            <option value="item3">Item 3</option>
+                        </select>
+                    </div>
+                    <button class="add-to-cart-btn btn btn-primary">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="restaurant-card">
+                    <img src="https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?cs=srgb&dl=pexels-chan-walrus-958545.jpg&fm=jpg" alt="Restaurant 3" />
+                    <h4 class="restaurant-name">Restaurant 3</h4>
+                    <p>Address: 123 Main St, City</p>
+                    <p>Contact: 123-456-7890</p>
+                    <div>
+                        <h5>Menu:</h5>
+                        <select class="food-dropdown">
+                            <option value="item1">Item 1</option>
+                            <option value="item2">Item 2</option>
+                            <option value="item3">Item 3</option>
+                        </select>
+                    </div>
+                    <button class="add-to-cart-btn btn btn-primary">Add to Cart</button>
                 </div>
             </div>
             <!-- Repeat the above card structure for other restaurants -->
-
-            <div class="col-md-4">
-                <div class="restaurant-card">
-                    <img src="https://img.freepik.com/free-photo/top-view-table-full-delicious-food-composition_23-2149141353.jpg?w=2000" alt="Restaurant 1" />
-                    <h4>Restaurant 2</h4>
-                    <p>Address: 123 Main St, City</p>
-                    <p>Contact: 123-456-7890</p>
-                    <button class="show-menu-btn btn btn-primary">Show Menu</button>
-                    <div class="menu-list" style="display: none;">
-                        <h5>Menu:</h5>
-                        <ul>
-                            <li>Item 1</li>
-                            <li>Item 2</li>
-                            <li>Item 3</li>
-                        </ul>
-                        <label for="menu2">Select Meal:</label>
-                        <select id="menu2">
-                            <option value="item1">Item 1</option>
-                            <option value="item2">Item 2</option>
-                            <option value="item3">Item 3</option>
-                        </select>
-                        <button class="add-cart-btn btn btn-primary">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <div class="col-md-4">
-                <div class="restaurant-card">
-                    <img src="https://www.deputy.com/uploads/2018/10/The-Most-Popular-Menu-Items-That-You-should-Consider-Adding-to-Your-Restaurant_Content-image1-min-1024x569.png" alt="Restaurant 1" />
-                    <h4>Restaurant 3</h4>
-                    <p>Address: 123 Main St, City</p>
-                    <p>Contact: 123-456-7890</p>
-                    <button class="show-menu-btn btn btn-primary">Show Menu</button>
-                    <div class="menu-list" style="display: none;">
-                        <h5>Menu:</h5>
-                        <ul>
-                            <li>Item 1</li>
-                            <li>Item 2</li>
-                            <li>Item 3</li>
-                        </ul>
-                        <label for="menu3">Select Meal:</label>
-                        <select id="menu3">
-                            <option value="item1">Item 1</option>
-                            <option value="item2">Item 2</option>
-                            <option value="item3">Item 3</option>
-                        </select>
-                        <button class="add-cart-btn btn btn-primary">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
+        </div>
+        <div class="cart-container">
+            <h3>Cart</h3>
+            <div class="cart-items"></div>
+            <button class="btn btn-danger delete-all-btn">Delete All</button>
+            <button class="btn btn-success buy-btn">Buy</button>
         </div>
     </div>
 </body>

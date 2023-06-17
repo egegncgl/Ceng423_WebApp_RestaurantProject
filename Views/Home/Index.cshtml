@@ -2,9 +2,58 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to the Restaurant App :)</h1>
-    <form method="post" action="/Home/Login">
-        <button type="submit" class="btn btn-primary">Go to Login Page </button>
-    </form>
-</div>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Food Order Home Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            margin-top: 100px;
+        }
+
+        .jumbotron {
+            background-color: #fff;
+            padding: 30px;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            font-size: 20px;
+            padding: 10px 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Welcome to our Online Food Order Website</h1>
+            <p>Order delicious food from your favorite restaurants and have it delivered right to your doorstep.</p>
+            
+            <form method="post" action="/Home/Login">
+                <button type="submit" class="btn btn-primary">Go to Login Page </button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
