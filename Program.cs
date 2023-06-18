@@ -1,17 +1,19 @@
+using Ceng423_WebApp_RestaurantProject.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
-
-
-
-// Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppContext>(
-    options=>options.UseSqlServer(builder.Configuration.GetConnectionString("Default"))
+    options => options.UseSqlServer(builder.Configuration.GetConnectionString("Default"))
 );
+
+// List<User> bile�enini ekleyelim
+builder.Services.AddSingleton<List<User>>();
+
+builder.Services.AddSingleton<Login>();
 
 var app = builder.Build();
 
@@ -19,7 +21,6 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -32,13 +33,12 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+//app.MapControllerRoute(
+//    name: "default",
+//    pattern: "{controller=Home}/{action=Index}/{id?}");
 
-
 app.MapControllerRoute(
-    name: "Login",
+    name: "Default",
     pattern: "{controller=Home}/{action=Login}");
 
 app.MapControllerRoute(
@@ -48,5 +48,13 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "Chart",
     pattern: "{controller=Home}/{action=Chart}");
+
+app.UseMiddleware<LoginMiddleware>();
+
+app.Use(async (context, next) =>
+{
+    await context.Response.WriteAsync($"\n Status Code:{context.Response.StatusCode}");
+    await next();
+});
 
 app.Run();

@@ -24,6 +24,8 @@ namespace Ceng423_WebApp_RestaurantProject.Models
             this.IsAdmin = isAdmin;
         }
 
+        public User() { }
+
         // Method to validate login credentials
         public bool ValidateLogin(string username, string password)
         {
