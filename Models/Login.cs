@@ -11,18 +11,33 @@
 
         public User AuthenticateUser(string username, string password)
         {
-            //burası database e göre değişecek
-            User user = users.FirstOrDefault(u => u.ValidateLogin(username, password));
-            if (user != null)
+            User user = null;
+            if (username == "ege" && password == "1234")
             {
-                Console.WriteLine("Giriş başarılı. Hoş geldiniz, " + user.Username + "!");
-                return user;
+                User temp = new User("ege", "egegncgl", "1234", "ege", "genc", false);
+                user = temp;
             }
-            else
-            {
-                Console.WriteLine("Giriş başarısız. Kullanıcı adı veya şifre hatalı.");
-                return null;
-            }
+
+
+            //User user = new User();
+            //if (username == "ege" && password == "1234")
+            //{
+            //    User temp = new User("ege", "egegncgl", "1234", "ege", "genc", false);
+            //    user = temp;
+            //}
+            ////burası database e göre değişecek
+            //User user = users.FirstOrDefault(u => u.ValidateLogin(username, password));
+            //if (user != null)
+            //{
+            //    Console.WriteLine("Giriş başarılı. Hoş geldiniz, " + user.Username + "!");
+            //    return user;
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Giriş başarısız. Kullanıcı adı veya şifre hatalı.");
+            //    return null;
+            //}
+            return user;
         }
     }
 }
