@@ -17,7 +17,7 @@
 
         public async Task InvokeAsync(HttpContext context)
         {
-            if (context.Request.Path == "/Account/Login" && context.Request.Method == HttpMethods.Post)
+            if (context.Request.Path == "/Home/Login" && context.Request.Method == HttpMethods.Post)
             {
                 // Kullanıcı adı ve şifre bilgilerini alınması gereken yerleri belirtin.
                 string username = context.Request.Form["loginUsername"];
@@ -36,11 +36,14 @@
                 {
                     // Kimlik doğrulama başarılı olduğunda buraya gelebilirsiniz.
                     // Kimlik doğrulama sonrası isteği işleme devretmek için _next delege'sini çağırın.
-
+                    context.Response.Redirect("/Home/Restaurants");
+                    
                     //sayfaya yönlendirme yapılacak bu kısımda
-                    await _next(context);
+                    
                 }
+               
             }
+             await _next(context);
         }
     }
 }

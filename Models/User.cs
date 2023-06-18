@@ -1,9 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
 namespace Ceng423_WebApp_RestaurantProject.Models
-{  [Keyless]
+{  
+    [Keyless]
     public class User
     {
+        
         public string Username { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
@@ -14,12 +16,12 @@ namespace Ceng423_WebApp_RestaurantProject.Models
         // Constructor
         public User(string username, string password, string email, string firstName, string lastName, bool isAdmin = false)
         {
-            Username = username;
-            Password = password;
-            Email = email;
-            FirstName = firstName;
-            LastName = lastName;
-            IsAdmin = isAdmin;
+            this.Username = username;
+            this.Password = password;
+            this.Email = email;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.IsAdmin = isAdmin;
         }
 
         // Method to validate login credentials

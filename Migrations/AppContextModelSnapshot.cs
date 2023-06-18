@@ -36,6 +36,10 @@ namespace Ceng423_WebApp_RestaurantProject.Migrations
                     b.Property<int>("Id")
                         .HasColumnType("int");
 
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("restaurantDescription")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -54,6 +58,34 @@ namespace Ceng423_WebApp_RestaurantProject.Migrations
                         .HasColumnType("int");
 
                     b.ToTable("Restaurant");
+                });
+
+            modelBuilder.Entity("Ceng423_WebApp_RestaurantProject.Models.User", b =>
+                {
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }

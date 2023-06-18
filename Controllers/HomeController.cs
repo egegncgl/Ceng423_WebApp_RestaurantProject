@@ -1,5 +1,7 @@
 ﻿using Ceng423_WebApp_RestaurantProject.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace Ceng423_WebApp_RestaurantProject.Controllers
@@ -39,7 +41,6 @@ namespace Ceng423_WebApp_RestaurantProject.Controllers
         {
             return View();
         }
-
 
 
         [HttpPost]

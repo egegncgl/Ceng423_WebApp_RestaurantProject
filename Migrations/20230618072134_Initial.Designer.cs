@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ceng423_WebApp_RestaurantProject.Migrations
 {
     [DbContext(typeof(AppContext))]
-    [Migration("20230616121402_Initial")]
+    [Migration("20230618072134_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,6 +38,10 @@ namespace Ceng423_WebApp_RestaurantProject.Migrations
                     b.Property<int>("Id")
                         .HasColumnType("int");
 
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("restaurantDescription")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -56,6 +60,34 @@ namespace Ceng423_WebApp_RestaurantProject.Migrations
                         .HasColumnType("int");
 
                     b.ToTable("Restaurant");
+                });
+
+            modelBuilder.Entity("Ceng423_WebApp_RestaurantProject.Models.User", b =>
+                {
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }

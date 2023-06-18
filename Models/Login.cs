@@ -8,15 +8,15 @@ namespace Ceng423_WebApp_RestaurantProject.Models
         private AppContext db;
         public List<User> users;
 
-        public Login(List<User> users)
+        public Login(AppContext dbContext)
         {
-            this.users = users;
+            db = dbContext;
            
         }
 
         public User AuthenticateUser(string username, string password)
         {
-            ///burası database e göre değişecek
+            //burası database e göre değişecek
              User user = db.Users.FirstOrDefault(u => u.Username == username && u.Password == password);
             if (user != null)
             {
