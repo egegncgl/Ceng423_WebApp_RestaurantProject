@@ -1,10 +1,8 @@
 ﻿namespace Ceng423_WebApp_RestaurantProject.Models
 {
-    public class Chart
+    public class RemovePurchaseDTO
     {
         public string Username { get; set; }
-        public Dictionary<string, double> Items { get; set; }
-
-        
+        public string Item { get; set; }
     }
 }

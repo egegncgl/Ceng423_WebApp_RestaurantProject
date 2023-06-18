@@ -9,17 +9,6 @@
         public string LastName { get; set; }
         public bool IsAdmin { get; set; }
 
-        // Constructor
-        public User(string username, string password, string email, string firstName, string lastName, bool isAdmin = false)
-        {
-            Username = username;
-            Password = password;
-            Email = email;
-            FirstName = firstName;
-            LastName = lastName;
-            IsAdmin = isAdmin;
-        }
-
         // Method to validate login credentials
         public bool ValidateLogin(string username, string password)
         {

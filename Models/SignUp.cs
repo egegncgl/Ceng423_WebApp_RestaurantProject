@@ -9,7 +9,7 @@
         {
             users = new List<User>();
         }
-
+        /*
         public void RegisterUser(string username, string password, string email, string firstName, string lastName)
         {
             // Kullanıcı adının benzersiz olup olmadığını kontrol etmek için gerekli mantığı ekleyebilirsiniz.
@@ -18,6 +18,6 @@
             User newUser = new User(username, password, email, firstName, lastName);
             users.Add(newUser);
             Console.WriteLine("Kullanıcı kaydedildi.");
-        }
+        }*/
     }
 }

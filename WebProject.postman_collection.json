@@ -1,0 +1,582 @@
+{
+	"info": {
+		"_postman_id": "54698759-cb72-455a-a0e6-ee30f251b66b",
+		"name": "WebProject",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22666188"
+	},
+	"item": [
+		{
+			"name": "Restaurants",
+			"item": [
+				{
+					"name": "All Restaurants",
+					"protocolProfileBehavior": {
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false,
+						"tlsPreferServerCiphers": false,
+						"disableCookies": false,
+						"removeRefererHeaderOnRedirect": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7219/Restaurants/GetAllRestaurants",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7219",
+							"path": [
+								"Restaurants",
+								"GetAllRestaurants"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Restaurant",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 5,\r\n        \"restaurantName\": \"deneme5\",\r\n        \"restaurantDescription\": \"desc\",\r\n        \"restaurantScores\": 10,\r\n        \"restaurantVoteCounter\": 6,\r\n        \"restaurantRate\": 2.12,\r\n        \"phone\": \"01010\",\r\n        \"menu\": {\r\n            \"restaurantID\": 5,\r\n            \"menuID\": 5,\r\n            \"items\": {\r\n                \"Item 1\": 80,\r\n                \"Item 2\": 57,\r\n                \"Item 3\": 45\r\n            }\r\n        }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7219/Restaurants/AddRestaurant",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7219",
+							"path": [
+								"Restaurants",
+								"AddRestaurant"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Restaurant",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 5,\r\n        \"restaurantName\": \"deneme5\",\r\n        \"restaurantDescription\": \"desc\",\r\n        \"restaurantScores\": 10,\r\n        \"restaurantVoteCounter\": 6,\r\n        \"restaurantRate\": 2.12,\r\n        \"phone\": \"cgcgcg\",\r\n        \"menu\": {\r\n            \"restaurantID\": 5,\r\n            \"menuID\": 5,\r\n            \"items\": {\r\n                \"Item 1\": 80,\r\n                \"Item 2\": 57,\r\n                \"Item 3\": 45\r\n            }\r\n        }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7219/Restaurants/UpdateRestaurant",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7219",
+							"path": [
+								"Restaurants",
+								"UpdateRestaurant"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Restaurant",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7219/Restaurants/DeleteRestaurant?id=5",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7219",
+							"path": [
+								"Restaurants",
+								"DeleteRestaurant"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Menu",
+			"item": [
+				{
+					"name": "All Menus",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7219/Menus/GetAllMenus",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7219",
+							"path": [
+								"Menus",
+								"GetAllMenus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Menus",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"restaurantID\": 5,\r\n    \"menuID\": 5,\r\n    \"items\": {\r\n    \"Item 1\": 80,\r\n    \"Item 2\": 57,\r\n    \"Item 3\": 45\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7219/Menus/AddMenus",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7219",
+							"path": [
+								"Menus",
+								"AddMenus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Menu",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"restaurantID\": 5,\r\n    \"menuID\": 5,\r\n    \"items\": {\r\n    \"Item 1\": 80,\r\n    \"Item 2\": 27,\r\n    \"Item 3\": 25\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7219/Menus/UpdateMenus",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7219",
+							"path": [
+								"Menus",
+								"UpdateMenus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Menu",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7219/Menus/DeleteMenus?id=5",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7219",
+							"path": [
+								"Menus",
+								"DeleteMenus"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7219/Users/GetAllUsers",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7219",
+							"path": [
+								"Users",
+								"GetAllUsers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"username\": \"test5\",\r\n        \"password\": \"12345\",\r\n        \"email\": \"test5@gmail.com\",\r\n        \"firstName\": \"test5\",\r\n        \"lastName\": \"test5\",\r\n        \"isAdmin\": true\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7219/Users/AddUsers",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7219",
+							"path": [
+								"Users",
+								"AddUsers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"username\": \"test5\",\r\n        \"password\": \"1234567\",\r\n        \"email\": \"test5@gmail.com\",\r\n        \"firstName\": \"test5\",\r\n        \"lastName\": \"test5\",\r\n        \"isAdmin\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7219/Users/UpdateUser",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7219",
+							"path": [
+								"Users",
+								"UpdateUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7219/Users/DeleteUser?username=test5",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7219",
+							"path": [
+								"Users",
+								"DeleteUser"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "test5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7219/Auth/GetUsers",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7219",
+							"path": [
+								"Auth",
+								"GetUsers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"test1\",\r\n    \"password\":\"wasd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7219/Auth/Login",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7219",
+							"path": [
+								"Auth",
+								"Login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"cg\",\r\n    \"password\":\"cgcgcg\",\r\n    \"email\":\"cg@gmail.com\",\r\n    \"firstname\":\"Ali Can\",\r\n    \"lastname\": \"Gunes\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7219/Auth/Register",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7219",
+							"path": [
+								"Auth",
+								"Register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Purchases",
+			"item": [
+				{
+					"name": "All Purchases",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7219/Purchases/GetAllPurchases",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7219",
+							"path": [
+								"Purchases",
+								"GetAllPurchases"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Purchase",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1,\r\n    \"username\": \"test1\",\r\n    \"chart\":{\r\n        \"username\": \"test1\",\r\n        \"items\":{\r\n            \"k\": 10,\r\n            \"l\": 15,\r\n            \"cf\": 20\r\n        }\r\n    },\r\n    \"paymentmethod\": \"credit card\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7219/Purchases/AddPurchase",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7219",
+							"path": [
+								"Purchases",
+								"AddPurchase"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Total Price",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7219/Purchases/GetTotalPrice",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7219",
+							"path": [
+								"Purchases",
+								"GetTotalPrice"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Total Price By Username",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7219/Purchases/GetTotalPriceByUsername?username=test1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7219",
+							"path": [
+								"Purchases",
+								"GetTotalPriceByUsername"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "test1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Order",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7219/Purchases/DeleteOrder?username=test2&item=k",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7219",
+							"path": [
+								"Purchases",
+								"DeleteOrder"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "test2"
+								},
+								{
+									"key": "item",
+									"value": "k"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Charts",
+			"item": [
+				{
+					"name": "All Charts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7219/Charts/GetAllChartsReq",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7219",
+							"path": [
+								"Charts",
+								"GetAllChartsReq"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
