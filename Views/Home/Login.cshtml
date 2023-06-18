@@ -33,11 +33,11 @@
             <h2>Signup</h2>
             @if (ViewBag.SignupErrorMessage != null)
             {
-                <div class="alert alert-danger">
-                    @ViewBag.SignupErrorMessage
-                </div>
+            <div class="alert alert-danger">
+                @ViewBag.SignupErrorMessage
+            </div>
             }
-            <form method="post" action="/Account/Signup">
+            <form method="post" action="/Home/Login">
                 <div class="form-group">
                     <label for="signupUsername">Username</label>
                     <input type="text" class="form-control" id="signupUsername" name="signupUsername" />
@@ -54,11 +54,11 @@
             <h2>Login</h2>
             @if (ViewBag.LoginErrorMessage != null)
             {
-                <div class="alert alert-danger">
-                    @ViewBag.LoginErrorMessage
-                </div>
+            <div class="alert alert-danger">
+                @ViewBag.LoginErrorMessage
+            </div>
             }
-            <form method="post" action="/Account/Login">
+            <form method="post" action="/Home/Restaurants" >
                 <div class="form-group">
                     <label for="loginUsername">Username</label>
                     <input type="text" class="form-control" id="loginUsername" name="loginUsername" />
@@ -71,6 +71,11 @@
             </form>
         </div>
     </div>
+
+
+    
+
+
 </body>
 </html>
 

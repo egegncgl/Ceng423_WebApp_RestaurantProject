@@ -9,5 +9,6 @@ public class AppContext:DbContext{
     }
     public DbSet<Menu> Menus {get;set;}
     public DbSet<Restaurant> Restaurant {get;set;}
-    
+    public DbSet<User> User { get; set; }
+
 }   

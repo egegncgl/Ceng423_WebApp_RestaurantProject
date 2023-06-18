@@ -1,157 +1,195 @@
-﻿@{
-    ViewData["Title"] = "Restaurants";
-}
+﻿@model List<Restaurant>
+
+    @{
+    ViewData["Title"] = "Restaurant List";
+    }
+
+
+
+    <h2>Restaurant List</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Restaurant Name</th>
+                <th>Location</th>
+                <th>Rating</th>
+                <th>Phone Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var restaurant in Model)
+        {
+            <tr>
+                <td>@restaurant.restaurantName</td>
+                <td>@restaurant.restaurantDescription</td>
+                <td>@restaurant.restaurantRate</td>
+                <td>@restaurant.Phone</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+
 
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Restaurant Page</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <style>
-        .container {
-            margin-top: 50px;
-        }
+    <html>
+    <head>
+        <title>Restaurant Page</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+        <style>
+            .container {
+                margin-top: 50px;
+            }
 
-        .restaurant-card {
-            margin-bottom: 20px;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
+            .restaurant-card {
+                margin-bottom: 20px;
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                position: relative;
+            }
 
-            .restaurant-card img {
-                max-width: 100%;
-                height: auto;
+                .restaurant-card img {
+                    max-width: 100%;
+                    height: auto;
+                    margin-bottom: 10px;
+                }
+
+            .add-to-cart-btn {
+                position: absolute;
+                bottom: 10px;
+                right: 10px;
+            }
+
+            .cart-container {
+                margin-top: 30px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                padding: 20px;
+                display: none;
+            }
+
+            .cart-item {
                 margin-bottom: 10px;
             }
 
-        .add-to-cart-btn {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-        }
+            .delete-btn {
+                margin-left: 10px;
+            }
 
-        .cart-container {
-            margin-top: 30px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 20px;
-            display: none;
-        }
+            .delete-all-btn {
+                margin-top: 10px;
+            }
 
-        .cart-item {
-            margin-bottom: 10px;
-        }
+            .buy-btn {
+                margin-top: 10px;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('.add-to-cart-btn').click(function () {
+                    var restaurantCard = $(this).closest('.restaurant-card');
+                    var restaurantName = restaurantCard.find('.restaurant-name').text();
+                    var selectedFood = restaurantCard.find('.food-dropdown option:selected').text();
+                    var cartItem = $('<div>').addClass('cart-item').text(restaurantName + ': ' + selectedFood);
+                    var deleteBtn = $('<button>').addClass('btn btn-danger delete-btn').text('Delete');
+                    cartItem.append(deleteBtn);
+                    $('.cart-items').append(cartItem);
+                    $('.cart-container').show();
+                });
 
-        .delete-btn {
-            margin-left: 10px;
-        }
+                $(document).on('click', '.delete-btn', function () {
+                    $(this).closest('.cart-item').remove();
+                });
 
-        .delete-all-btn {
-            margin-top: 10px;
-        }
+                $(document).on('click', '.delete-all-btn', function () {
+                    $('.cart-items').empty();
+                });
 
-        .buy-btn {
-            margin-top: 10px;
-        }
-    </style>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('.add-to-cart-btn').click(function () {
-                var restaurantCard = $(this).closest('.restaurant-card');
-                var restaurantName = restaurantCard.find('.restaurant-name').text();
-                var selectedFood = restaurantCard.find('.food-dropdown option:selected').text();
-                var cartItem = $('<div>').addClass('cart-item').text(restaurantName + ': ' + selectedFood);
-                var deleteBtn = $('<button>').addClass('btn btn-danger delete-btn').text('Delete');
-                cartItem.append(deleteBtn);
-                $('.cart-items').append(cartItem);
-                $('.cart-container').show();
+                $('.buy-btn').click(function () {
+                    alert('Thank you for your purchase!');
+                    $('.cart-items').empty();
+                });
             });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Restaurants</h2>
+           
+            <div class="row">
+                @for (int i = 0; i < Model.Count; i++){
+                <div class="col-md-4">
+                    <div class="restaurant-card">
+                        <img src="https://img.freepik.com/free-photo/top-view-table-full-delicious-food-composition_23-2149141353.jpg?w=2000" alt="Restaurant 1" />
 
-            $(document).on('click', '.delete-btn', function () {
-                $(this).closest('.cart-item').remove();
-            });
 
-            $(document).on('click', '.delete-all-btn', function () {
-                $('.cart-items').empty();
-            });
+                        <h4 class="restaurant-name">@Model[0].restaurantName</h4>
+                        <p>@Model[0].restaurantDescription</p>
+                        <p>Contact: @Model[0].Phone</p>
 
-            $('.buy-btn').click(function () {
-                alert('Thank you for your purchase!');
-                $('.cart-items').empty();
-            });
-        });
-    </script>
-</head>
-<body>
-    <div class="container">
-        <h2>Restaurants</h2>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="restaurant-card">
-                    <img src="https://img.freepik.com/free-photo/top-view-table-full-delicious-food-composition_23-2149141353.jpg?w=2000" alt="Restaurant 1" />
-                    <h4 class="restaurant-name">Restaurant 1</h4>
-                    <p>Address: 123 Main St, City</p>
-                    <p>Contact: 123-456-7890</p>
-                    <div>
-                        <h5>Menu:</h5>
-                        <select class="food-dropdown">
-                            <option value="item1">Item 1</option>
-                            <option value="item2">Item 2</option>
-                            <option value="item3">Item 3</option>
-                        </select>
+                        <div>
+                            <h5>Menu:</h5>
+                            <select class="food-dropdown">
+                                <option value="item1">Item 1</option>
+                                <option value="item2">Item 2</option>
+                                <option value="item3">Item 3</option>
+                            </select>
+                        </div>
+                        <button class="add-to-cart-btn btn btn-primary">Add to Cart</button>
                     </div>
-                    <button class="add-to-cart-btn btn btn-primary">Add to Cart</button>
                 </div>
-            </div>
 
-            <div class="col-md-4">
-                <div class="restaurant-card">
-                    <img src="https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?cs=srgb&dl=pexels-pixabay-262978.jpg&fm=jpg" alt="Restaurant 2" />
-                    <h4 class="restaurant-name">Restaurant 2</h4>
-                    <p>Address: 123 Main St, City</p>
-                    <p>Contact: 123-456-7890</p>
-                    <div>
-                        <h5>Menu:</h5>
-                        <select class="food-dropdown">
-                            <option value="item1">Item 1</option>
-                            <option value="item2">Item 2</option>
-                            <option value="item3">Item 3</option>
-                        </select>
+                <div class="col-md-4">
+                    <div class="restaurant-card">
+                        <img src="https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?cs=srgb&dl=pexels-pixabay-262978.jpg&fm=jpg" alt="Restaurant 2" />
+                        <h4 class="restaurant-name">@Model[1].restaurantName</h4>
+                        <p>@Model[1].restaurantDescription</p>
+                        <p>Contact: @Model[1].Phone</p>
+                        <div>
+                            <h5>Menu:</h5>
+                            <select class="food-dropdown">
+                                <option value="item1">Item 1</option>
+                                <option value="item2">Item 2</option>
+                                <option value="item3">Item 3</option>
+                            </select>
+                        </div>
+                        <button class="add-to-cart-btn btn btn-primary">Add to Cart</button>
                     </div>
-                    <button class="add-to-cart-btn btn btn-primary">Add to Cart</button>
                 </div>
-            </div>
 
-            <div class="col-md-4">
-                <div class="restaurant-card">
-                    <img src="https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?cs=srgb&dl=pexels-chan-walrus-958545.jpg&fm=jpg" alt="Restaurant 3" />
-                    <h4 class="restaurant-name">Restaurant 3</h4>
-                    <p>Address: 123 Main St, City</p>
-                    <p>Contact: 123-456-7890</p>
-                    <div>
-                        <h5>Menu:</h5>
-                        <select class="food-dropdown">
-                            <option value="item1">Item 1</option>
-                            <option value="item2">Item 2</option>
-                            <option value="item3">Item 3</option>
-                        </select>
+                <div class="col-md-4">
+                    <div class="restaurant-card">
+                        <img src="https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?cs=srgb&dl=pexels-chan-walrus-958545.jpg&fm=jpg" alt="Restaurant 3" />
+                        <h4 class="restaurant-name">@Model[2].restaurantName</h4>
+                        <p>@Model[2].restaurantDescription</p>
+                        <p>Contact: @Model[2].Phone</p>
+                        <div>
+                            <h5>Menu:</h5>
+                            <select class="food-dropdown">
+                                <option value="item1">Item 1</option>
+                                <option value="item2">Item 2</option>
+                                <option value="item3">Item 3</option>
+                            </select>
+                        </div>
+                        <button class="add-to-cart-btn btn btn-primary">Add to Cart</button>
                     </div>
-                    <button class="add-to-cart-btn btn btn-primary">Add to Cart</button>
-                </div>
+                </div>                  break;
+  
+ }
+               
             </div>
-            <!-- Repeat the above card structure for other restaurants -->
+            <div class="cart-container">
+                <h3>Cart</h3>
+                <div class="cart-items"></div>
+                <button class="btn btn-danger delete-all-btn">Delete All</button>
+                <button class="btn btn-success buy-btn">Buy</button>
+            </div>
+      
         </div>
-        <div class="cart-container">
-            <h3>Cart</h3>
-            <div class="cart-items"></div>
-            <button class="btn btn-danger delete-all-btn">Delete All</button>
-            <button class="btn btn-success buy-btn">Buy</button>
-        </div>
-    </div>
-</body>
-</html>
-
+    </body>
+    </html>
+  

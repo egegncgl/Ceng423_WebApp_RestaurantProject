@@ -1,19 +1,23 @@
-﻿using Ceng423_WebApp_RestaurantProject.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
+using Ceng423_WebApp_RestaurantProject.Models;
 
 namespace Ceng423_WebApp_RestaurantProject.Controllers
 {
     public class HomeController : Controller
     {
-        private List<string> cartItems; // This represents the cart items. You may use a different data structure or storage mechanism.
-
+        private List<string> cartItems; 
         private readonly ILogger<HomeController> _logger;
+        private readonly AppContext _appContext;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, AppContext appContext)
         {
             _logger = logger;
             cartItems = new List<string>();
+            _appContext = appContext;
         }
 
         public IActionResult Index()
@@ -26,21 +30,39 @@ namespace Ceng423_WebApp_RestaurantProject.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
 
+        [HttpPost]
+        public IActionResult Login(String loginUsername, String loginPassword)
+        {
+            var userFromDb = _appContext.User.FirstOrDefault(m => m.Username == loginUsername && m.Password == loginPassword);
+            if (userFromDb == null)
+            {
+                ViewBag.LoginStatus = 0;
+                return View();
+            }
+
+            return RedirectToAction("Restaurants");
+        }
+
         public IActionResult Restaurants()
         {
-            return View();
+            var restaurants = _appContext.Restaurant.ToList();
+            return View(restaurants);
         }
+
+
+       
+
+
         public IActionResult Chart()
         {
             return View();
         }
-
-
 
         [HttpPost]
         public IActionResult AddToCart(string item)

@@ -3,7 +3,7 @@
     public class Login
     {
         public List<User> users;
-
+        private AppContext appContext;
         public Login(List<User> users)
         {
             this.users = users;
@@ -11,7 +11,9 @@
 
         public User AuthenticateUser(string username, string password)
         {
-            //burası database e göre değişecek
+            users = appContext.User.ToList();
+
+            
             User user = users.FirstOrDefault(u => u.ValidateLogin(username, password));
             if (user != null)
             {

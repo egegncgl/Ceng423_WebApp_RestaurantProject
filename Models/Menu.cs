@@ -8,19 +8,23 @@ namespace Ceng423_WebApp_RestaurantProject.Models
         public int RestaurantID { get; set; }
 
         public int MenuID { get; set; }
-        public Dictionary<string, double> Items { get; set; }
+         public String Food { get; set; }
+        public int Price { get; set; }
+
 
         //functions
 
         //Constroctors
         public Menu() { }
-        public Menu(int restaurantID, int menuID)
+        public Menu(int restaurantID, int menuID, String food, int price)
         {
             RestaurantID = restaurantID;
             MenuID = menuID;
-            Items = new Dictionary<string, double>();
+            Food = food;
+            Price = price;
+            
         }
-
+        /*
         //Menüye yemek ve fiyatını ekliyor
         public void AddItem(string itemName, double price)
         {
@@ -39,5 +43,6 @@ namespace Ceng423_WebApp_RestaurantProject.Models
 
             return 0.0; // Eğer yemek ismi mevcut değilse 0.0 değerini döndürür
         }
+        */
     }
 }

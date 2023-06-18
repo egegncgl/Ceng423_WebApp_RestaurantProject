@@ -23,7 +23,6 @@ namespace Ceng423_WebApp_RestaurantProject
 
         private string GenerateRestaurantListResponse()
         {
-            // Restoran listesinden restoranları alarak bir yanıt oluştur
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("Restaurant List:");
             foreach (var restaurant in restaurants)
